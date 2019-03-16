@@ -24,7 +24,7 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.awakeFromNib()
-
+        print("adding to table")
         cell.senderLabel.text = arrayOfSnaps[index].sender
         cell.dateSentLabel.text = arrayOfSnaps[index].timeSent
         cell.hasBeenOpenedSquare.backgroundColor = .red

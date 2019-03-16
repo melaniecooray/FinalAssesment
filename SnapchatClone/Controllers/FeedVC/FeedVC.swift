@@ -40,12 +40,13 @@ class FeedVC: UIViewController, VCDelegate {
     func setupArrayOfSnaps() {
         arrayOfSnaps = []
         /* PART 2B START */
-        FirebaseAPIClient.getSnaps(completion: { (images) in
+        FirebaseAPIClient.getSnaps(completion: { images in
             self.arrayOfSnaps = images
+            print(self.arrayOfSnaps!)
+            self.tableView.reloadData()
         })
         
         /* PART 2B FINISH */
-        tableView.reloadData()
     }
     
     func setupTableView() {

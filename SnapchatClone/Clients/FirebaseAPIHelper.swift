@@ -20,14 +20,15 @@ class FirebaseAPIClient {
             for snap in snapshot.children {
                 let newSnap = snap as! DataSnapshot
                 let dict = newSnap.value as! [String:Any]
-                let imageName = dict["imageURL"] as! String
-                let storage = Storage.storage().reference(forURL: imageName)
+                let imageName = dict["imageURL"]
+                let storage = Storage.storage().reference(forURL: imageName as! String)
                 storage.downloadURL(completion: { (url, error) in
                     do {
                         let data = try Data(contentsOf: url!)
                         let image = UIImage(data: data as Data)
                         let toAppend = SnapImage(sentBy: dict["sentBy"] as! String, sentTo: dict["sentTo"] as! String, timeSent: dict["timeSent"] as! String, image: image!)
                         images.append(toAppend)
+                        print("added image")
                     } catch let error as NSError {
                         print ("Error getting image: %@", error)
                     }
