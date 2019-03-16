@@ -26,7 +26,7 @@ class FirebaseAPIClient {
                     do {
                         let data = try Data(contentsOf: url!)
                         let image = UIImage(data: data as Data)
-                        let toAppend = SnapImage(sentBy: dict["sentBy"] as! String, sentTo: dict["sentTo"] as! String, timeSent: dict["timeSent"] as! String, image: image!)
+                        let toAppend = SnapImage(sentBy: dict["sentBy"] as! String, sentTo: dict["sentTo"] as!String, timeSent: dict["timeSent"] as! String, image: image!)
                         images.append(toAppend)
                         print("added image")
                     } catch let error as NSError {
